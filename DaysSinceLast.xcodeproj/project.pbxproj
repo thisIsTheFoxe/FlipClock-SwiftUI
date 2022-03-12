@@ -11,6 +11,10 @@
 		D5CCD63927DC719C00607B5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD63827DC719C00607B5B /* ContentView.swift */; };
 		D5CCD63B27DC71A000607B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CCD63A27DC71A000607B5B /* Assets.xcassets */; };
 		D5CCD63E27DC71A000607B5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CCD63D27DC71A000607B5B /* Preview Assets.xcassets */; };
+		D5CCD64527DC71AE00607B5B /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD64427DC71AE00607B5B /* FlipView.swift */; };
+		D5CCD64727DC71EF00607B5B /* SingleFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD64627DC71EF00607B5B /* SingleFlipView.swift */; };
+		D5CCD64927DC720200607B5B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD64827DC720200607B5B /* Extensions.swift */; };
+		D5CCD64B27DC728F00607B5B /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD64A27DC728F00607B5B /* FlipViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		D5CCD63827DC719C00607B5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5CCD63A27DC71A000607B5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5CCD63D27DC71A000607B5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D5CCD64427DC71AE00607B5B /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		D5CCD64627DC71EF00607B5B /* SingleFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFlipView.swift; sourceTree = "<group>"; };
+		D5CCD64827DC720200607B5B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D5CCD64A27DC728F00607B5B /* FlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 			children = (
 				D5CCD63627DC719C00607B5B /* DaysSinceLastApp.swift */,
 				D5CCD63827DC719C00607B5B /* ContentView.swift */,
+				D5CCD64427DC71AE00607B5B /* FlipView.swift */,
+				D5CCD64A27DC728F00607B5B /* FlipViewModel.swift */,
+				D5CCD64627DC71EF00607B5B /* SingleFlipView.swift */,
+				D5CCD64827DC720200607B5B /* Extensions.swift */,
 				D5CCD63A27DC71A000607B5B /* Assets.xcassets */,
 				D5CCD63C27DC71A000607B5B /* Preview Content */,
 			);
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CCD64927DC720200607B5B /* Extensions.swift in Sources */,
+				D5CCD64B27DC728F00607B5B /* FlipViewModel.swift in Sources */,
 				D5CCD63927DC719C00607B5B /* ContentView.swift in Sources */,
+				D5CCD64527DC71AE00607B5B /* FlipView.swift in Sources */,
 				D5CCD63727DC719C00607B5B /* DaysSinceLastApp.swift in Sources */,
+				D5CCD64727DC71EF00607B5B /* SingleFlipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
