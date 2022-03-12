@@ -8,8 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static var background: Color { .black }
-    static var flipBackground: Color { .orange }
+    static var flipBackground: Color { Color(UIColor.label) }
     static var separator: Color { .gray }
-    static var textColor: Color { .white }
+    static var textColor: Color { Color(UIColor.systemBackground) }
 }

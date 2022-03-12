@@ -10,8 +10,12 @@ import SwiftUI
 import Foundation
 import Combine
 
-class CounterViewModel {
-    var daysSince = 0
+class CounterViewModel: ObservableObject {
+    @Published var daysSince = 0 {
+        didSet {
+            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
+        }
+    }
     var inCloseAniation = false
     var numberOfUpdatesNeeded: Int {
         var result = 1
@@ -21,18 +25,24 @@ class CounterViewModel {
         }
         return result
     }
-    var digits: Int = 5 {
+    @Published var digits: Int = 5 {
         didSet {
+            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
             if digits == flipViewModels.count + 1 {
-                flipViewModels.append(FlipViewModel())
+                let newModel = FlipViewModel()
+                flipViewModels.append(newModel)
+                withAnimation {
+                    newModel.updateTexts(old: "0", new: "1", animared: true)
+                }
             } else if digits == flipViewModels.count - 1 {
                 flipViewModels.removeLast()
-            } else { flipViewModels = Array(repeating: FlipViewModel.dummy, count: digits) }
+            } else { initModels() }
         }
     }
     private(set) var flipViewModels: [FlipViewModel] = []
 
-    init() {
+    fileprivate func initModels() {
+        flipViewModels.removeAll()
         for ix in 0..<digits {
             let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
             let newModel = FlipViewModel()
@@ -40,10 +50,21 @@ class CounterViewModel {
             flipViewModels.append(newModel)
         }
     }
+    
+    init() {
+        if UserDefaults.standard.bool(forKey: "didSave") {
+            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
+            digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
+        } else {
+            initModels()
+            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
+            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
+            UserDefaults.standard.set(true, forKey: "didSave")
+        }
+    }
     // MARK: - Private
     func updatePercent(_ percent: Double) {
         for ix in 0..<numberOfUpdatesNeeded {
-            print(ix)
             flipViewModels[ix].animateTop = true
             flipViewModels[ix].animateBottom = true
             flipViewModels[ix].percent = percent
@@ -69,13 +90,33 @@ class CounterViewModel {
 }
 
 struct ContentView: View {
-    let viewModel = CounterViewModel()
+    @ObservedObject var viewModel = CounterViewModel()
+
+    var lastDateFormatted: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        guard let date = Calendar.current.date(byAdding: .day, value: -viewModel.daysSince, to: Date()) else { return "" }
+        return formatter.string(from: date)
+    }
+
     var body: some View {
-        HStack {
-            ForEach(1..<(viewModel.digits + 1)) { ix in
-                FlipView(viewModel: viewModel.flipViewModels[viewModel.digits - ix])
+        VStack {
+            Stepper("# of digits", value: $viewModel.digits)
+            Spacer()
+            Text("Days since last accident:")
+                .font(.title)
+            HStack {
+                Spacer()
+                ForEach(viewModel.flipViewModels.reversed()) { model in
+                    FlipView(viewModel: model)
+                }
+                Spacer()
             }
+            Text("Last accident on " + lastDateFormatted)
+                .font(.caption)
+            Spacer()
         }
+        .background()
         .gesture(
             DragGesture(minimumDistance: 5, coordinateSpace: .global)
                 .onChanged { value in
@@ -98,6 +139,13 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().preferredColorScheme(.dark)
     }
+}
+extension DateFormatter {
+    static var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        return formatter
+    }
+
 }
