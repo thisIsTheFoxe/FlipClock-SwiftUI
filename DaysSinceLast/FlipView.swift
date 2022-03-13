@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct FlipView: View {
-
+    
     init(viewModel: FlipViewModel) {
         self.viewModel = viewModel
         print(viewModel)
     }
-
+    
     @ObservedObject var viewModel: FlipViewModel
-
+    
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -24,7 +24,7 @@ struct FlipView: View {
                     .rotation3DEffect(
                         .init(
                             degrees:
-                                viewModel.animateTop ? (viewModel.percent * -90).clamped(to: -90...0) : 0),
+                                (viewModel.percent * -90).clamped(to: -90...0)),
                         axis: (1, 0, 0),
                         anchor: .bottom,
                         perspective: 0.5)
@@ -33,25 +33,25 @@ struct FlipView: View {
                 .frame(height: 1)
             ZStack {
                 SingleFlipView(text: viewModel.oldValue ?? "", type: .bottom)
-                if viewModel.animateBottom {
+                if viewModel.percent >= 1 {
                     SingleFlipView(text: viewModel.newValue ?? "", type: .bottom)
-                    .rotation3DEffect(
-                        .init(
-                            degrees:
-                                viewModel.percent < 1 || !viewModel.animateBottom ? 90 : (2 - viewModel.percent).clamped(to: 0...90) * 90),
-                        axis: (1, 0, 0),
-                        anchor: .top,
-                        perspective: 0.5)
+                        .rotation3DEffect(
+                            .init(
+                                degrees:
+                                    ((2 - viewModel.percent) * 90).clamped(to: 0...90)),
+                            axis: (1, 0, 0),
+                            anchor: .top,
+                            perspective: 0.5)
                 }
             }
         }
-            .fixedSize()
+        .fixedSize()
     }
 }
 
 struct FlipView_Previews: PreviewProvider {
     static var previews: some View {
-        FlipView(viewModel: FlipViewModel())
+        FlipView(viewModel: FlipViewModel(parentModel: CounterViewModel()))
     }
 }
 

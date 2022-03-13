@@ -11,29 +11,37 @@ import Foundation
 import Combine
 
 class CounterViewModel: ObservableObject {
-    @Published var daysSince = 0 {
+    @Published var daysSince = 98 {
         didSet {
             UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
         }
     }
     var inCloseAniation = false
-    var numberOfUpdatesNeeded: Int {
+    
+    @Published var animationSpeed: AnimationTimes = .long
+    
+    func numberOfUpdatesNeeded(for newDaysSince: Int) -> Int {
         var result = 1
-        guard daysSince != 0 else { return result }
-        while (daysSince + 1) % Int(pow(Double(10), Double(result))) == 0, result < digits {
+        guard newDaysSince != 0 else { return result }
+        while (newDaysSince) % Int(pow(Double(10), Double(result))) == 0, result < digits {
             result += 1
         }
         return result
+
     }
     @Published var digits: Int = 5 {
         didSet {
             UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
             if digits == flipViewModels.count + 1 {
-                let newModel = FlipViewModel()
+                self.inCloseAniation = true
+                let newModel = FlipViewModel(parentModel: self)
                 flipViewModels.append(newModel)
-                withAnimation {
-                    newModel.updateTexts(old: "0", new: "1", animared: true)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    newModel.updateTexts(old: "0", new: "1")
                 }
+                completeAnimation(after: animationSpeed.fullFlip)
+                
             } else if digits == flipViewModels.count - 1 {
                 flipViewModels.removeLast()
             } else { initModels() }
@@ -45,15 +53,16 @@ class CounterViewModel: ObservableObject {
         flipViewModels.removeAll()
         for ix in 0..<digits {
             let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
-            let newModel = FlipViewModel()
-            newModel.updateTexts(old: "\(digitAtIx)", new: "\(digitAtIx + 1)", animared: true)
+            let nextDigit = (digitAtIx + 1) % 10
+            let newModel = FlipViewModel(parentModel: self)
+            newModel.setText(old: "\(digitAtIx)", new: "\(nextDigit)")
             flipViewModels.append(newModel)
         }
     }
     
     init() {
         if UserDefaults.standard.bool(forKey: "didSave") {
-            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
+//            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
             digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
         } else {
             initModels()
@@ -64,25 +73,50 @@ class CounterViewModel: ObservableObject {
     }
     // MARK: - Private
     func updatePercent(_ percent: Double) {
-        for ix in 0..<numberOfUpdatesNeeded {
-            flipViewModels[ix].animateTop = true
-            flipViewModels[ix].animateBottom = true
+        for ix in 0..<numberOfUpdatesNeeded(for: daysSince + 1) {
             flipViewModels[ix].percent = percent
         }
     }
-
+    
+    func completeAnimation(after delay: Double) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay){
+            self.inCloseAniation = false
+        }
+    }
+    
+    func resetFlips() {
+        guard !inCloseAniation else { return }
+        inCloseAniation = true
+        daysSince = 0
+        for model in flipViewModels {
+            model.updateTexts(old: "0", new: "1")
+        }
+        completeAnimation(after: animationSpeed.resetFlip + animationSpeed.fallSpringFlip)
+    }
+    
+    func increase() {
+        guard !inCloseAniation else { return }
+        inCloseAniation = true
+        withAnimation(.easeIn(duration: animationSpeed.halfFlip)) {
+            updatePercent(1)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip){
+            self.complete()
+        }
+    }
+    
     func complete() {
         inCloseAniation = true
-        withAnimation(.spring(response: 0.7, dampingFraction: 0.25, blendDuration: 0.5)) {
+        withAnimation(animationSpeed.flipAnimation) {
             updatePercent(2)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.fallSpringFlip) { [self] in
             daysSince += 1
             daysSince = daysSince % Int(pow(Double(10), Double(digits)))
-            for ix in 0..<numberOfUpdatesNeeded {
+            for ix in 0..<numberOfUpdatesNeeded(for: daysSince) {
                 let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
-                let nextDigit = ((daysSince + 1) / Int(pow(Double(10), Double(ix)))) % 10
-                flipViewModels[ix].updateTexts(old: "\(digitAtIx)", new: "\(nextDigit)", animared: false)
+                let nextDigit = (digitAtIx + 1) % 10
+                flipViewModels[ix].setText(old: "\(digitAtIx)", new: "\(nextDigit)")
                 inCloseAniation = false
             }
         }
@@ -101,8 +135,14 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Stepper("# of digits", value: $viewModel.digits)
             Spacer()
+            Picker("Animation", selection: $viewModel.animationSpeed) {
+                Text("Long").tag(AnimationTimes.long)
+                Text("Medium").tag(AnimationTimes.medium)
+                Text("Short").tag(AnimationTimes.short)
+            }
+            .pickerStyle(.segmented)
+            Stepper("# of digits", value: $viewModel.digits, in: 0...5)
             Text("Days since last accident:")
                 .font(.title)
             HStack {
@@ -114,6 +154,12 @@ struct ContentView: View {
             }
             Text("Last accident on " + lastDateFormatted)
                 .font(.caption)
+            Button("Reset") {
+                viewModel.resetFlips()
+            }
+            Button("Increase") {
+                viewModel.increase()
+            }
             Spacer()
         }
         .background()
