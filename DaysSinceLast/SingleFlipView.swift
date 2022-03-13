@@ -13,20 +13,21 @@ struct SingleFlipView: View {
         self.text = text
         self.type = type
     }
+    var isBig: Bool { UIScreen.main.bounds.width > 500 }
 
     var body: some View {
         Text(text)
-            .font(.system(size: 40))
+            .font(.system(size: isBig ? 64 : 40))
             .fontWeight(.heavy)
             .foregroundColor(.textColor)
             .fixedSize()
             .padding(type.padding, -20)
-            .frame(width: 15, height: 20, alignment: type.alignment)
+            .frame(width: isBig ? 60 : 15, height: isBig ? 80: 20, alignment: type.alignment)
             .padding(type.paddingEdges, 10)
             .clipped()
             .background(Color.flipBackground)
             .cornerRadius(4)
-            .padding(type.padding, -4.5)
+            .padding(type.padding, isBig ? -18 : -4.5)
             .clipped()
     }
 

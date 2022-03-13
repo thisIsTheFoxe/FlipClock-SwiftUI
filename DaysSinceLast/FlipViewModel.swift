@@ -9,13 +9,8 @@ import Combine
 import SwiftUI
 
 class FlipViewModel: ObservableObject, Identifiable {
-
-    
     @Published var newValue: String?
     @Published var oldValue: String?
-
-//    @Published var animateTop: Bool = false
-//    @Published var animate: Bool = false
     
     @Published var percent: Double = 0
     
@@ -32,7 +27,6 @@ class FlipViewModel: ObservableObject, Identifiable {
     }
     
     func updateTexts(old: String?, new: String?) {
-        print(parentModel.animationSpeed.resetFlip, parentModel.animationSpeed.fallSpringFlip)
         guard old != oldValue, new != newValue else { return }
         percent = 0
         self.newValue = old

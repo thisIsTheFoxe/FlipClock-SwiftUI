@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D55C055827DE6B9500D28E43 /* HapticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C055727DE6B9500D28E43 /* HapticOperation.swift */; };
+		D55C055A27DE7C0100D28E43 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C055927DE7C0100D28E43 /* CounterViewModel.swift */; };
+		D55C055E27DE7DD900D28E43 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C055D27DE7DD900D28E43 /* SettingsHeaderView.swift */; };
 		D5CCD63727DC719C00607B5B /* DaysSinceLastApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD63627DC719C00607B5B /* DaysSinceLastApp.swift */; };
 		D5CCD63927DC719C00607B5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCD63827DC719C00607B5B /* ContentView.swift */; };
 		D5CCD63B27DC71A000607B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5CCD63A27DC71A000607B5B /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		D55C055727DE6B9500D28E43 /* HapticOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticOperation.swift; sourceTree = "<group>"; };
+		D55C055927DE7C0100D28E43 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
+		D55C055D27DE7DD900D28E43 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		D5CCD63327DC719C00607B5B /* DaysSinceLast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysSinceLast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5CCD63627DC719C00607B5B /* DaysSinceLastApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSinceLastApp.swift; sourceTree = "<group>"; };
 		D5CCD63827DC719C00607B5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,10 +67,12 @@
 			children = (
 				D5CCD63627DC719C00607B5B /* DaysSinceLastApp.swift */,
 				D5CCD63827DC719C00607B5B /* ContentView.swift */,
+				D55C055D27DE7DD900D28E43 /* SettingsHeaderView.swift */,
 				D5CCD64427DC71AE00607B5B /* FlipView.swift */,
 				D5CCD64A27DC728F00607B5B /* FlipViewModel.swift */,
 				D5CCD64627DC71EF00607B5B /* SingleFlipView.swift */,
 				D5CCD64827DC720200607B5B /* Extensions.swift */,
+				D55C055927DE7C0100D28E43 /* CounterViewModel.swift */,
 				D55C055727DE6B9500D28E43 /* HapticOperation.swift */,
 				D5CCD63A27DC71A000607B5B /* Assets.xcassets */,
 				D5CCD63C27DC71A000607B5B /* Preview Content */,
@@ -155,8 +161,10 @@
 				D5CCD64927DC720200607B5B /* Extensions.swift in Sources */,
 				D5CCD64B27DC728F00607B5B /* FlipViewModel.swift in Sources */,
 				D5CCD63927DC719C00607B5B /* ContentView.swift in Sources */,
+				D55C055E27DE7DD900D28E43 /* SettingsHeaderView.swift in Sources */,
 				D5CCD64527DC71AE00607B5B /* FlipView.swift in Sources */,
 				D5CCD63727DC719C00607B5B /* DaysSinceLastApp.swift in Sources */,
+				D55C055A27DE7C0100D28E43 /* CounterViewModel.swift in Sources */,
 				D55C055827DE6B9500D28E43 /* HapticOperation.swift in Sources */,
 				D5CCD64727DC71EF00607B5B /* SingleFlipView.swift in Sources */,
 			);
@@ -295,8 +303,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,8 +334,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -6,142 +6,11 @@
 //
 
 import SwiftUI
-
-import Foundation
 import Combine
-
-class CounterViewModel: ObservableObject {
-    var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
-    @Published var daysSince = 98 {
-        didSet {
-            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
-        }
-    }
-    var inCloseAniation = false
-    
-    @Published var animationSpeed: AnimationTimes = .long
-    
-    func numberOfUpdatesNeeded(for newDaysSince: Int) -> Int {
-        var result = 1
-        guard newDaysSince != 0 else { return result }
-        while (newDaysSince) % Int(pow(Double(10), Double(result))) == 0, result < digits {
-            result += 1
-        }
-        return result
-
-    }
-    @Published var digits: Int = 5 {
-        didSet {
-            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
-            if digits == flipViewModels.count + 1 {
-                self.inCloseAniation = true
-                let newModel = FlipViewModel(parentModel: self)
-                flipViewModels.append(newModel)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    newModel.updateTexts(old: "0", new: "1")
-                }
-                completeAnimation(isReset: false)
-            } else if digits == flipViewModels.count - 1 {
-                flipViewModels.removeLast()
-            } else { initModels() }
-        }
-    }
-    private(set) var flipViewModels: [FlipViewModel] = []
-
-    fileprivate func initModels() {
-        flipViewModels.removeAll()
-        for ix in 0..<digits {
-            let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
-            let nextDigit = (digitAtIx + 1) % 10
-            let newModel = FlipViewModel(parentModel: self)
-            newModel.setText(old: "\(digitAtIx)", new: "\(nextDigit)")
-            flipViewModels.append(newModel)
-        }
-    }
-    
-    init() {
-        if UserDefaults.standard.bool(forKey: "didSave") {
-//            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
-            digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
-            let speedRawValue = UserDefaults.standard.integer(forKey: "CounterViewModel.animationSpeed")
-            if let speed = AnimationTimes(rawValue: speedRawValue) {
-                animationSpeed = speed
-            }
-        } else {
-            initModels()
-            UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
-            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
-            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
-            UserDefaults.standard.set(true, forKey: "didSave")
-        }
-    }
-    // MARK: - Private
-    func updatePercent(_ percent: Double) {
-        for ix in 0..<numberOfUpdatesNeeded(for: daysSince + 1) {
-            flipViewModels[ix].percent = percent
-        }
-    }
-    
-    func completeAnimation(isReset: Bool) {
-        let delay: Double
-        if isReset {
-            delay = animationSpeed.resetFlip + animationSpeed.fallSpringFlip
-            DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.resetFlip) {
-                self.patternEngine.generate(pattern: self.animationSpeed.resetPattern)
-            }
-        } else {
-            delay = animationSpeed.halfFlip + animationSpeed.fallSpringFlip
-            DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
-                self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay){
-            self.inCloseAniation = false
-        }
-    }
-    
-    func resetFlips() {
-        guard !inCloseAniation, daysSince != 0 else { return }
-        inCloseAniation = true
-        daysSince = 0
-        for model in flipViewModels {
-            model.updateTexts(old: "0", new: "1")
-        }
-        completeAnimation(isReset: true)
-    }
-    
-    func increase() {
-        guard !inCloseAniation else { return }
-        inCloseAniation = true
-        withAnimation(.easeIn(duration: animationSpeed.halfFlip)) {
-            updatePercent(1)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
-            self.complete()
-            self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
-        }
-    }
-    
-    func complete() {
-        inCloseAniation = true
-        withAnimation(animationSpeed.flipAnimation) {
-            updatePercent(2)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.fallSpringFlip) { [self] in
-            daysSince += 1
-            daysSince = daysSince % Int(pow(Double(10), Double(digits)))
-            for ix in 0..<numberOfUpdatesNeeded(for: daysSince) {
-                let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
-                let nextDigit = (digitAtIx + 1) % 10
-                flipViewModels[ix].setText(old: "\(digitAtIx)", new: "\(nextDigit)")
-            }
-            inCloseAniation = false
-        }
-    }
-}
 
 struct ContentView: View {
     @ObservedObject var viewModel = CounterViewModel()
+    @State var showTitleEdit = false
 
     var lastDateFormatted: String {
         let formatter = DateFormatter()
@@ -152,16 +21,15 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Spacer()
-            Picker("Animation", selection: $viewModel.animationSpeed) {
-                ForEach(AnimationTimes.allCases, id: \.self) { speed in
-                    Text(speed.title).tag(speed)
-                }
-            }
-            .pickerStyle(.segmented)
-            Stepper("# of digits", value: $viewModel.digits, in: 0...5)
-            Text("Days since last accident:")
+            SettingsHeaderView(viewModel: viewModel)
+            Spacer(minLength: 75)
+            Text("\(viewModel.description):")
                 .font(.title)
+                .onTapGesture {
+                    UIApplication.shared.keyWindow()?.showAlert(placeholder: "Title", currentText: viewModel.description, primaryTitle: "Set Title", cancelTitle: "Cancel", primaryAction: { newTitle in
+                        viewModel.description = newTitle
+                    })
+                }
             HStack {
                 Spacer()
                 ForEach(viewModel.flipViewModels.reversed()) { model in
@@ -171,28 +39,47 @@ struct ContentView: View {
                 Spacer()
             }
             .animation(.easeOut(duration: viewModel.animationSpeed.halfFlip), value: viewModel.digits)
-            Text("Last accident on " + lastDateFormatted)
+            Text(lastDateFormatted)
                 .font(.caption)
+                .padding(.bottom, 35)
+            
             Button("Reset") {
                 viewModel.resetFlips()
             }
-            Button("Increase") {
+            .disabled(viewModel.inCloseAnimation)
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(TintShapeStyle(), lineWidth: 3)
+            )
+            .padding(.bottom)
+            Button(action: {
                 viewModel.increase()
-            }
+            }, label: {
+                Text("Increase").font(.title2).bold()
+            })
+            .disabled(viewModel.inCloseAnimation)
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(TintShapeStyle(), lineWidth: 3)
+            )
             Spacer()
+                .layoutPriority(1)
         }
+        .tint(Color.flipBackground)
         .background()
         .gesture(
             DragGesture(minimumDistance: 5, coordinateSpace: .global)
                 .onChanged { value in
-                    guard !viewModel.inCloseAniation else { return }
+                    guard !viewModel.inCloseAnimation else { return }
                     viewModel.updatePercent(value.translation.height / 50)
                     if 40...60 ~= value.translation.height, viewModel.patternEngine.isFinished {
                         viewModel.patternEngine.generate(pattern: viewModel.animationSpeed.flipPattern)
                     }
                 }
                 .onEnded({ value in
-                    guard !viewModel.inCloseAniation else { return }
+                    guard !viewModel.inCloseAnimation else { return }
                     if value.translation.height / 50 > 1 {
                         viewModel.complete()
                     } else {
@@ -209,11 +96,4 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().preferredColorScheme(.dark)
     }
-}
-extension DateFormatter {
-    static var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        return formatter
-    }
-
 }

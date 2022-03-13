@@ -4,6 +4,9 @@
 //
 //  Created by Henrik Storch on 13.03.22.
 //
+// MIT Licensed
+// Copyright (c) 2018 isapozhnik <sapozhnik.ivan@gmail.com>
+// https://github.com/iSapozhnik/Haptico/
 
 import UIKit
 
@@ -110,13 +113,13 @@ final class HapticFeedbackNotificationEngine {
     }
     
     @available(iOS 10.0, *)
-    private var impactGenerator: (light: UIImpactFeedbackGenerator, medium: UIImpactFeedbackGenerator, heavy: UIImpactFeedbackGenerator, soft: UIImpactFeedbackGenerator, rigit: UIImpactFeedbackGenerator) {
+    private var impactGenerator: (light: UIImpactFeedbackGenerator, medium: UIImpactFeedbackGenerator, heavy: UIImpactFeedbackGenerator, soft: UIImpactFeedbackGenerator, rigid: UIImpactFeedbackGenerator) {
         return (
             light: UIImpactFeedbackGenerator(style: .light),
             medium: UIImpactFeedbackGenerator(style: .medium),
             heavy: UIImpactFeedbackGenerator(style: .heavy),
             soft: UIImpactFeedbackGenerator(style: .soft),
-            rigit: UIImpactFeedbackGenerator(style: .rigid)
+            rigid: UIImpactFeedbackGenerator(style: .rigid)
         )
     }
 
@@ -138,7 +141,7 @@ final class HapticFeedbackNotificationEngine {
         case .soft:
             impactGenerator.soft.impactOccurred()
         case .rigid:
-            impactGenerator.rigit.impactOccurred()
+            impactGenerator.rigid.impactOccurred()
         @unknown default: return
         }
     }

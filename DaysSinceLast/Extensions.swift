@@ -13,19 +13,42 @@ extension Color {
     static var textColor: Color { Color(UIColor.systemBackground) }
 }
 
-enum AnimationTimes: Int, CaseIterable, Equatable {
-    var title: String {
+extension DateFormatter {
+    static var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        return formatter
+    }
+}
+
+
+extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        return min(max(self, limits.lowerBound), limits.upperBound)
+    }
+}
+
+#if swift(<5.1)
+extension Strideable where Stride: SignedInteger {
+    func clamped(to limits: CountableClosedRange<Self>) -> Self {
+        return min(max(self, limits.lowerBound), limits.upperBound)
+    }
+}
+#endif
+
+
+enum AnimationTime: Int, CaseIterable, Equatable {
+    var iconName: String {
         switch self {
         case .short:
-            return "Short"
+            return "hare"
         case .medium:
-            return "Medium"
+            return "speedometer"
         case .long:
-            return "Long"
+            return "tortoise"
         }
     }
     case short, medium, long
-    
+
     var flipPattern: HapticoPattern {
         switch self {
         case .short:
@@ -36,7 +59,7 @@ enum AnimationTimes: Int, CaseIterable, Equatable {
             return HapticoPattern(pattern: "o-*")
         }
     }
-    
+
     var resetPattern: HapticoPattern {
         switch self {
         case .short:
@@ -88,9 +111,42 @@ enum AnimationTimes: Int, CaseIterable, Equatable {
         case .medium:
             return 1
         case .long:
-            return 2
+            return 1.5
         }
     }
     
     var fullFlip: Double { halfFlip + fallSpringFlip }
+}
+
+extension UIWindow {
+    public func showAlert(placeholder: String, currentText: String, primaryTitle: String, cancelTitle: String, primaryAction: @escaping (String) -> Void) {
+        let alertController = UIAlertController(title: primaryTitle, message: nil, preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = placeholder
+            textField.text = currentText
+            textField.becomeFirstResponder()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { textField.selectAll(nil) }
+        }
+
+        let primaryButton = UIAlertAction(title: primaryTitle, style: .default) { _ in
+            guard let text = alertController.textFields?[0].text else { return }
+            primaryAction(text)
+        }
+
+        let cancelButton = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+
+        alertController.addAction(primaryButton)
+        alertController.addAction(cancelButton)
+
+        self.rootViewController?.present(alertController, animated: true)
+    }
+}
+
+extension UIApplication {
+    func keyWindow() -> UIWindow? {
+        return UIApplication.shared.connectedScenes
+        .filter { $0.activationState == .foregroundActive }
+        .compactMap { $0 as? UIWindowScene }
+        .first?.windows.filter { $0.isKeyWindow }.first
+    }
 }
