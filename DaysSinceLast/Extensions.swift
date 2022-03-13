@@ -26,6 +26,28 @@ enum AnimationTimes: Int, CaseIterable, Equatable {
     }
     case short, medium, long
     
+    var flipPattern: HapticoPattern {
+        switch self {
+        case .short:
+            return HapticoPattern(pattern: ".X")
+        case .medium:
+            return HapticoPattern(pattern: "o-O")
+        case .long:
+            return HapticoPattern(pattern: "o-*")
+        }
+    }
+    
+    var resetPattern: HapticoPattern {
+        switch self {
+        case .short:
+            return HapticoPattern(pattern: "..X")
+        case .medium:
+            return HapticoPattern(pattern: "oooO")
+        case .long:
+            return HapticoPattern(pattern: "o-o-o-*")
+        }
+    }
+    
     var flipAnimation: Animation {
         switch self {
         case .short:

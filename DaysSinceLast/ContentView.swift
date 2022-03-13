@@ -11,6 +11,7 @@ import Foundation
 import Combine
 
 class CounterViewModel: ObservableObject {
+    var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
     @Published var daysSince = 98 {
         didSet {
             UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
@@ -36,12 +37,10 @@ class CounterViewModel: ObservableObject {
                 self.inCloseAniation = true
                 let newModel = FlipViewModel(parentModel: self)
                 flipViewModels.append(newModel)
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     newModel.updateTexts(old: "0", new: "1")
                 }
-                completeAnimation(after: animationSpeed.fullFlip)
-                
+                completeAnimation(isReset: false)
             } else if digits == flipViewModels.count - 1 {
                 flipViewModels.removeLast()
             } else { initModels() }
@@ -83,20 +82,32 @@ class CounterViewModel: ObservableObject {
         }
     }
     
-    func completeAnimation(after delay: Double) {
+    func completeAnimation(isReset: Bool) {
+        let delay: Double
+        if isReset {
+            delay = animationSpeed.resetFlip + animationSpeed.fallSpringFlip
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.resetFlip) {
+                self.patternEngine.generate(pattern: self.animationSpeed.resetPattern)
+            }
+        } else {
+            delay = animationSpeed.halfFlip + animationSpeed.fallSpringFlip
+            DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
+                self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
+            }
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay){
             self.inCloseAniation = false
         }
     }
     
     func resetFlips() {
-        guard !inCloseAniation else { return }
+        guard !inCloseAniation, daysSince != 0 else { return }
         inCloseAniation = true
         daysSince = 0
         for model in flipViewModels {
             model.updateTexts(old: "0", new: "1")
         }
-        completeAnimation(after: animationSpeed.resetFlip + animationSpeed.fallSpringFlip)
+        completeAnimation(isReset: true)
     }
     
     func increase() {
@@ -105,8 +116,9 @@ class CounterViewModel: ObservableObject {
         withAnimation(.easeIn(duration: animationSpeed.halfFlip)) {
             updatePercent(1)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip){
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
             self.complete()
+            self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
         }
     }
     
@@ -122,8 +134,8 @@ class CounterViewModel: ObservableObject {
                 let digitAtIx = (daysSince / Int(pow(Double(10), Double(ix)))) % 10
                 let nextDigit = (digitAtIx + 1) % 10
                 flipViewModels[ix].setText(old: "\(digitAtIx)", new: "\(nextDigit)")
-                inCloseAniation = false
             }
+            inCloseAniation = false
         }
     }
 }
@@ -154,9 +166,11 @@ struct ContentView: View {
                 Spacer()
                 ForEach(viewModel.flipViewModels.reversed()) { model in
                     FlipView(viewModel: model)
+                        .transition(.offset(x: 20, y: 0))
                 }
                 Spacer()
             }
+            .animation(.easeOut(duration: viewModel.animationSpeed.halfFlip), value: viewModel.digits)
             Text("Last accident on " + lastDateFormatted)
                 .font(.caption)
             Button("Reset") {
@@ -173,6 +187,9 @@ struct ContentView: View {
                 .onChanged { value in
                     guard !viewModel.inCloseAniation else { return }
                     viewModel.updatePercent(value.translation.height / 50)
+                    if 40...60 ~= value.translation.height, viewModel.patternEngine.isFinished {
+                        viewModel.patternEngine.generate(pattern: viewModel.animationSpeed.flipPattern)
+                    }
                 }
                 .onEnded({ value in
                     guard !viewModel.inCloseAniation else { return }
