@@ -64,8 +64,13 @@ class CounterViewModel: ObservableObject {
         if UserDefaults.standard.bool(forKey: "didSave") {
 //            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
             digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
+            let speedRawValue = UserDefaults.standard.integer(forKey: "CounterViewModel.animationSpeed")
+            if let speed = AnimationTimes(rawValue: speedRawValue) {
+                animationSpeed = speed
+            }
         } else {
             initModels()
+            UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
             UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
             UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
             UserDefaults.standard.set(true, forKey: "didSave")
@@ -137,9 +142,9 @@ struct ContentView: View {
         VStack {
             Spacer()
             Picker("Animation", selection: $viewModel.animationSpeed) {
-                Text("Long").tag(AnimationTimes.long)
-                Text("Medium").tag(AnimationTimes.medium)
-                Text("Short").tag(AnimationTimes.short)
+                ForEach(AnimationTimes.allCases, id: \.self) { speed in
+                    Text(speed.title).tag(speed)
+                }
             }
             .pickerStyle(.segmented)
             Stepper("# of digits", value: $viewModel.digits, in: 0...5)

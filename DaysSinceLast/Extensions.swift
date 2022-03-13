@@ -13,7 +13,17 @@ extension Color {
     static var textColor: Color { Color(UIColor.systemBackground) }
 }
 
-enum AnimationTimes {
+enum AnimationTimes: Int, CaseIterable, Equatable {
+    var title: String {
+        switch self {
+        case .short:
+            return "Short"
+        case .medium:
+            return "Medium"
+        case .long:
+            return "Long"
+        }
+    }
     case short, medium, long
     
     var flipAnimation: Animation {
