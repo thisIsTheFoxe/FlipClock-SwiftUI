@@ -2,30 +2,35 @@ import Combine
 import SwiftUI
 
 class FlipViewModel: ObservableObject, Identifiable {
-
-    var text: String? {
-        didSet { updateTexts(old: oldValue, new: text) }
-    }
-
     @Published var newValue: String?
     @Published var oldValue: String?
+    
+    @Published var percent: Double = 0
+    
+    @ObservedObject var parentModel: CounterViewModel
 
-    @Published var animateTop: Bool = false
-    @Published var animateBottom: Bool = false
+    public init(parentModel: CounterViewModel) {
+        self.parentModel = parentModel
+    }
 
-    func updateTexts(old: String?, new: String?) {
-        guard old != new else { return }
+    func setText(old: String?, new: String?) {
         oldValue = old
-        animateTop = false
-        animateBottom = false
-
-        withAnimation(Animation.easeIn(duration: 0.2)) { [weak self] in
-            self?.newValue = new
-            self?.animateTop = true
+        self.newValue = new
+        percent = 0
+    }
+    
+    func updateTexts(old: String?, new: String?) {
+        guard old != oldValue, new != newValue else { return }
+        percent = 0
+        self.newValue = old
+        withAnimation(.easeIn(duration: parentModel.animationSpeed.resetFlip)) {
+            self.percent = 1
         }
-
-        withAnimation(Animation.easeOut(duration: 0.2).delay(0.2)) { [weak self] in
-            self?.animateBottom = true
+        withAnimation(parentModel.animationSpeed.flipAnimation.delay(parentModel.animationSpeed.resetFlip)) {
+            self.percent = 2
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + parentModel.animationSpeed.resetFlip + parentModel.animationSpeed.fallSpringFlip) {
+            self.setText(old: old, new: new)
         }
     }
 
