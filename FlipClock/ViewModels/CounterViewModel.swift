@@ -1,13 +1,6 @@
-//
-//  CounterViewModel.swift
-//  DaysSinceLast
-//
-//  Created by Henrik Storch on 13.03.22.
-//
-
 import SwiftUI
 
-class CounterViewModel: ObservableObject {
+class CounterViewModel: ObservableObject, FlipViewManager {
     var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
     @Published var daysSince = 0 {
         didSet {
@@ -44,7 +37,7 @@ class CounterViewModel: ObservableObject {
             } else { initModels() }
         }
     }
-    private(set) var flipViewModels: [FlipViewModel] = []
+    private(set) var flipViewModels: [FlipViewModel<CounterViewModel>] = []
     @Published var description: String = "Days since last accident" {
         didSet {
             UserDefaults.standard.set(description, forKey: "CounterViewModel.description")

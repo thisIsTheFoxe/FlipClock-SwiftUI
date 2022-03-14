@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct FlipView: View {
-    
-    init(viewModel: FlipViewModel) {
+struct FlipView<T: ObservableObject & FlipViewManager>: View {
+
+    init(viewModel: FlipViewModel<T>) {
         self.viewModel = viewModel
     }
-    
-    @ObservedObject var viewModel: FlipViewModel
-    
+
+    @ObservedObject var viewModel: FlipViewModel<T>
+
     var body: some View {
         VStack(spacing: 0) {
             ZStack {

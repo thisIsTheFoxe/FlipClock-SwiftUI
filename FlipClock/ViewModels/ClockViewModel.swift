@@ -1,13 +1,14 @@
 import Foundation
 import Combine
 
-class ClockViewModel {
+class ClockViewModel: FlipViewManager, ObservableObject {
+    let animationSpeed: AnimationTime = .short
 
     init() {
         setupTimer()
     }
 
-    private(set) lazy var flipViewModels = { (0...5).map { _ in FlipViewModel() } }()
+    private(set) lazy var flipViewModels = { (0...5).map { _ in FlipViewModel(parentModel: self) } }()
 
     // MARK: - Private
 
@@ -22,7 +23,7 @@ class ClockViewModel {
 
     private func setTimeInViewModels(time: String) {
         zip(time, flipViewModels).forEach { number, viewModel in
-            viewModel.text = "\(number)"
+            viewModel.updateTexts(old: "\(number)", new: nil)
         }
     }
 

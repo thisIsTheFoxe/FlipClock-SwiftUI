@@ -1,10 +1,3 @@
-//
-//  SettingsHeaderView.swift
-//  DaysSinceLast
-//
-//  Created by Henrik Storch on 13.03.22.
-//
-
 import SwiftUI
 
 struct SettingsHeaderView: View {

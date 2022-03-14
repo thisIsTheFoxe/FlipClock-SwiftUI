@@ -1,28 +1,39 @@
 import Combine
 import SwiftUI
 
-class FlipViewModel: ObservableObject, Identifiable {
+protocol FlipViewManager {
+    var animationSpeed: AnimationTime { get }
+}
+
+class FlipViewModel<T: FlipViewManager & ObservableObject>: ObservableObject, Identifiable {
     @Published var newValue: String?
     @Published var oldValue: String?
     
     @Published var percent: Double = 0
     
-    @ObservedObject var parentModel: CounterViewModel
+    @ObservedObject var parentModel: T
 
-    public init(parentModel: CounterViewModel) {
+    public init(parentModel: T) {
         self.parentModel = parentModel
     }
 
+    /// (re)set the text without animation
     func setText(old: String?, new: String?) {
         oldValue = old
         self.newValue = new
         percent = 0
     }
-    
+
+    /// update the flipper where old is the new base and new is the next one
     func updateTexts(old: String?, new: String?) {
-        guard old != oldValue, new != newValue else { return }
-        percent = 0
+        guard old != oldValue || new != newValue else { return }
         self.newValue = old
+        runAnimation(old: old, new: new)
+    }
+
+    /// complete the animation with the current values, and the completion values that are passed
+    fileprivate func runAnimation(old: String?, new: String?) {
+        percent = 0
         withAnimation(.easeIn(duration: parentModel.animationSpeed.resetFlip)) {
             self.percent = 1
         }
@@ -33,5 +44,4 @@ class FlipViewModel: ObservableObject, Identifiable {
             self.setText(old: old, new: new)
         }
     }
-
 }

@@ -8,4 +8,8 @@ extension DateFormatter {
         return formatter
     }
 
+    static var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        return formatter
+    }
 }
