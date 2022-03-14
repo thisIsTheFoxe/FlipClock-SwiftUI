@@ -1,16 +1,18 @@
-# Flip clock implementation in SwiftUI
+# Flip counter implementation in SwiftUI
 
-![Swift: 5.1](https://img.shields.io/badge/Swift-5.1-blue.svg)
 ![SwiftUI](https://img.shields.io/badge/UI_framework-SwiftUI-green.svg)
 
-Flip clock is Simple app written in SwiftUI. The App displays current time with flip animation.
+Flip counter is a simple, aesthetic app written in SwiftUI and a forked from [elpassion/FlipClock-SwiftUI](https://github.com/elpassion/FlipClock-SwiftUI).
+The app let's you flip a simple counter over one number at a time. Ideal for keeping track of your streaks.
 
 |Light|Dark|
 |:-:|:-:|
-|![Light_preview](Gifs/flip_clock_light.gif)|![Dark_preview](Gifs/flip_clock_dark.gif)|
+|![Light preview GIF](Gifs/light.gif)|![Dark preview GIF](Gifs/dark.gif)|
 
 ## License
 
 Copyright © 2019 [EL Passion](https://www.elpassion.com)
+
+Copyright © 2022 [Henrik Storch](https://thisisthefoxe.me)
 
 License: [GNU GPLv3](LICENSE)
