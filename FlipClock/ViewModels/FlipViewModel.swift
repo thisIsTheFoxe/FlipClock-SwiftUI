@@ -3,14 +3,15 @@ import SwiftUI
 
 protocol FlipViewManager {
     var animationSpeed: AnimationTime { get }
+    var base: Base { get }
 }
 
 class FlipViewModel<T: FlipViewManager & ObservableObject>: ObservableObject, Identifiable {
     @Published var newValue: String?
     @Published var oldValue: String?
-    
+
     @Published var percent: Double = 0
-    
+
     @ObservedObject var parentModel: T
 
     public init(parentModel: T) {

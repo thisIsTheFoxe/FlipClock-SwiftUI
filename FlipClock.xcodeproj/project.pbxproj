@@ -20,6 +20,7 @@
 		47F96E492354F3490036311F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E482354F3490036311F /* Assets.xcassets */; };
 		47F96E4C2354F3490036311F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4B2354F3490036311F /* Preview Assets.xcassets */; };
 		47F96E4F2354F3490036311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4D2354F3490036311F /* LaunchScreen.storyboard */; };
+		D51BBAEA284FFF2F000EDF0A /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BBAE9284FFF2F000EDF0A /* Base.swift */; };
 		D5C5BEF027DFB504007FE21B /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */; };
 		D5C5BEF227DFB50E007FE21B /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF127DFB50E007FE21B /* SettingsHeaderView.swift */; };
 		D5C5BEF427DFB520007FE21B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF327DFB520007FE21B /* ContentView.swift */; };
@@ -44,6 +45,7 @@
 		47F96E4B2354F3490036311F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47F96E4E2354F3490036311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47F96E502354F3490036311F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D51BBAE9284FFF2F000EDF0A /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
 		D5C5BEF127DFB50E007FE21B /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		D5C5BEF327DFB520007FE21B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				47DEBEC02358F93C004E2BCA /* FlipViewModel.swift */,
 				47DEBEBA2358F8C4004E2BCA /* ClockViewModel.swift */,
 				D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */,
+				D51BBAE9284FFF2F000EDF0A /* Base.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				47DEBEC52358F9B2004E2BCA /* Color+Colors.swift in Sources */,
 				47F96E472354F3480036311F /* CounterView.swift in Sources */,
 				47DEBEC72358F9D5004E2BCA /* FlipView.swift in Sources */,
+				D51BBAEA284FFF2F000EDF0A /* Base.swift in Sources */,
 				D5C5BEF427DFB520007FE21B /* ContentView.swift in Sources */,
 				47DEBEC12358F93C004E2BCA /* FlipViewModel.swift in Sources */,
 				D5C5BEF827DFB5B9007FE21B /* Extensions.swift in Sources */,
@@ -380,7 +384,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FlipClock/Preview Content\"";
-				DEVELOPMENT_TEAM = H5QFB36W2F;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FlipClock/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -403,7 +407,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FlipClock/Preview Content\"";
-				DEVELOPMENT_TEAM = H5QFB36W2F;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FlipClock/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

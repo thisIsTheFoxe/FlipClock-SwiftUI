@@ -1,5 +1,18 @@
 import SwiftUI
 
+extension String {
+    init?(_ value: Int, base: Base, padding: Int) {
+        if base == .doz {
+            self = String(value, radix: 12, uppercase: true).replacingOccurrences(of: "A", with: "D").replacingOccurrences(of: "B", with: "E")
+        } else {
+            self.init(value, radix: base.rawValue, uppercase: true)
+        }
+        while self.count < padding {
+            self.insert("0", at: self.startIndex)
+        }
+    }
+}
+
 extension Comparable {
     func clamped(to limits: ClosedRange<Self>) -> Self {
         return min(max(self, limits.lowerBound), limits.upperBound)

@@ -4,6 +4,7 @@ struct SettingsHeaderView: View {
     @ObservedObject var viewModel: CounterViewModel
     @State var showSpeed = false
     @State var showDigits = false
+
     var body: some View {
         VStack(spacing: 10) {
             HStack {
@@ -12,7 +13,7 @@ struct SettingsHeaderView: View {
                 } label: {
                     Image(systemName: "timer")
                         .imageScale(.large)
-                        .padding()
+                        .padding(25)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(TintShapeStyle(), lineWidth: 3)
@@ -37,14 +38,23 @@ struct SettingsHeaderView: View {
                 } label: {
                     Image(systemName: "number")
                         .imageScale(.large)
-                        .padding()
+                        .padding(25)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(TintShapeStyle(), lineWidth: 3)
                         )
                 }
                 if showDigits {
-                    Stepper("# of digits: ", value: $viewModel.digits, in: 1...6)
+                    VStack {
+                        Stepper("# of digits: ", value: $viewModel.digits, in: 1...6)
+                        Picker(selection: $viewModel.base) {
+                            ForEach(Base.allCases) { base in
+                                Text(base.baseName)
+                                    .accentColor(Color(UIColor.systemBlue))
+                            }
+                        } label: { Text("Base").accentColor(.black) }
+
+                    }
                 }
                 Spacer()
             }

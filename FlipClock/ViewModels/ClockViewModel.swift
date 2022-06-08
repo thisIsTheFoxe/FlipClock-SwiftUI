@@ -2,6 +2,7 @@ import Foundation
 import Combine
 
 class ClockViewModel: FlipViewManager, ObservableObject {
+    @Published var base: Base = .dec
     let animationSpeed: AnimationTime = .short
 
     init() {
