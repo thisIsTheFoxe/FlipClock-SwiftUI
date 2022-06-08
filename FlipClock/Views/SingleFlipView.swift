@@ -15,7 +15,7 @@ struct SingleFlipView: View {
             .foregroundColor(.textColor)
             .fixedSize()
             .padding(type.padding, -20)
-            .frame(width: isBig ? 60 : 15, height: isBig ? 80: 20, alignment: type.alignment)
+            .frame(width: isBig ? 65 : 20, height: isBig ? 80: 20, alignment: type.alignment)
             .padding(type.paddingEdges, 10)
             .clipped()
             .background(Color.flipBackground)
