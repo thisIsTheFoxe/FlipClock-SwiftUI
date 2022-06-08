@@ -2,7 +2,7 @@ import SwiftUI
 
 class CounterViewModel: ObservableObject, FlipViewManager {
     var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
-    @Published var daysSince = 0 {
+    @Published var daysSince: Int {
         didSet {
             UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
         }
@@ -10,15 +10,16 @@ class CounterViewModel: ObservableObject, FlipViewManager {
 
     @Published var inCloseAnimation = false
 
-    @Published var animationSpeed: AnimationTime = .long {
+    @Published var animationSpeed: AnimationTime {
         didSet {
             UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
         }
     }
 
-    @Published var base: Base = .dec {
+    @Published var base: Base {
         didSet {
-            // TODO: Update UI
+            UserDefaults.standard.set(base.rawValue, forKey: "CounterViewModel.base")
+            refresh()
         }
     }
 
@@ -32,7 +33,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
 
     }
 
-    @Published var digits: Int = 5 {
+    @Published var digits: Int {
         didSet {
             UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
             if digits == flipViewModels.count + 1 {
@@ -51,7 +52,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
 
     private(set) var flipViewModels: [FlipViewModel<CounterViewModel>] = []
 
-    @Published var description: String = "Days since last accident" {
+    @Published var description: String {
         didSet {
             UserDefaults.standard.set(description, forKey: "CounterViewModel.description")
         }
@@ -61,13 +62,18 @@ class CounterViewModel: ObservableObject, FlipViewManager {
         if UserDefaults.standard.bool(forKey: "didSave") {
             daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
             digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
-            if let desc = UserDefaults.standard.string(forKey: "CounterViewModel.description") { description = desc }
+            description = UserDefaults.standard.string(forKey: "CounterViewModel.description") ?? "Days since last accident"
             let baseValue = UserDefaults.standard.integer(forKey: "CounterViewModel.base")
-            if let savedBase = Base(rawValue: baseValue) { base = savedBase }
+            base = Base(rawValue: baseValue) ?? .dec
             let speedRawValue = UserDefaults.standard.integer(forKey: "CounterViewModel.animationSpeed")
-            if let speed = AnimationTime(rawValue: speedRawValue) { animationSpeed = speed }
+            animationSpeed = AnimationTime(rawValue: speedRawValue) ?? .long
         } else {
-            initModels()
+            animationSpeed = .long
+            base = .dec
+            daysSince = 0
+            digits = 5
+            description = "Days since last accident"
+
             UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
             UserDefaults.standard.set(base.rawValue, forKey: "CounterViewModel.base")
             UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
@@ -75,6 +81,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             UserDefaults.standard.set(description, forKey: "CounterViewModel.description")
             UserDefaults.standard.set(true, forKey: "didSave")
         }
+        initModels()
     }
 
     fileprivate func initModels() {
@@ -83,7 +90,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             let digitAtIx = (daysSince / Int(pow(Double(base.rawValue), Double(ix)))) % base.rawValue
             let nextDigit = (digitAtIx + 1) % base.rawValue
             let newModel = FlipViewModel(parentModel: self)
-            newModel.setText(old: "\(digitAtIx)", new: "\(nextDigit)")
+            newModel.setText(old: base.character(for: digitAtIx), new: base.character(for: nextDigit))
             flipViewModels.append(newModel)
         }
     }
@@ -134,6 +141,19 @@ class CounterViewModel: ObservableObject, FlipViewManager {
         }
     }
     
+    func refresh() {
+        inCloseAnimation = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.fullFlip) { [self] in
+            daysSince = daysSince % Int(pow(Double(base.rawValue), Double(digits)))
+            for ix in 0..<digits {
+                let digitAtIx = (daysSince / Int(pow(Double(base.rawValue), Double(ix)))) % base.rawValue
+                let nextDigit = (digitAtIx + 1) % base.rawValue
+                flipViewModels[ix].updateTexts(old: base.character(for: digitAtIx), new: base.character(for: nextDigit))
+            }
+            inCloseAnimation = false
+        }
+    }
+    
     func complete() {
         inCloseAnimation = true
         withAnimation(animationSpeed.flipAnimation) {
@@ -146,7 +166,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             for ix in 0..<numberOfUpdatesNeeded(for: daysSince) {
                 let digitAtIx = (daysSince / Int(pow(Double(base.rawValue), Double(ix)))) % base.rawValue
                 let nextDigit = (digitAtIx + 1) % base.rawValue
-                flipViewModels[ix].setText(old: "\(digitAtIx)", new: "\(nextDigit)")
+                flipViewModels[ix].setText(old: base.character(for: digitAtIx), new: base.character(for: nextDigit))
             }
             inCloseAnimation = false
         }
