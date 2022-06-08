@@ -15,7 +15,7 @@ struct CounterView: View {
     var body: some View {
         VStack {
             SettingsHeaderView(viewModel: viewModel)
-            Spacer(minLength: 75)
+            Spacer()
             Text("\(viewModel.description):")
                 .font(.title)
                 .onTapGesture {
@@ -57,8 +57,7 @@ struct CounterView: View {
                 RoundedRectangle(cornerRadius: 4)
                     .stroke(TintShapeStyle(), lineWidth: 3)
             )
-            Spacer()
-                .layoutPriority(1)
+            Spacer(minLength: 100)
         }
         .tint(Color.flipBackground)
         .background()

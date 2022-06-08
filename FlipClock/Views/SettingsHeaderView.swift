@@ -1,25 +1,69 @@
 import SwiftUI
 
+enum Setting {
+    case animation, digits, base
+}
+
 struct SettingsHeaderView: View {
     @ObservedObject var viewModel: CounterViewModel
-    @State var showSpeed = false
-    @State var showDigits = false
+    @State var activeSetting: Setting? {
+        didSet {
+            if activeSetting == oldValue { activeSetting = nil }
+        }
+    }
 
     var body: some View {
         VStack(spacing: 10) {
-            HStack {
+            HStack(spacing: 20) {
                 Button {
-                    showSpeed.toggle()
+                    activeSetting = .animation
                 } label: {
                     Image(systemName: "timer")
-                        .imageScale(.large)
-                        .padding(25)
+                        .font(.title)
+                        .padding(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(TintShapeStyle(), lineWidth: 3)
                         )
                 }
-                if showSpeed {
+                Button {
+                    activeSetting = .digits
+                } label: {
+                    Image(systemName: "number")
+                        .font(.title)
+                        .padding(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(TintShapeStyle(), lineWidth: 3)
+                        )
+                }
+                Menu {
+                    ForEach(Base.allCases) { base in
+                        HStack {
+                            Button {
+                                viewModel.base = base
+                            } label: {
+                                if base == viewModel.base {
+                                    Image(systemName: "checkmark")
+                                    Spacer()
+                                }
+                                Text(base.baseName)
+                            }
+                        }
+                    }
+                } label: {
+                    Image(systemName: "florinsign.square")
+                        .font(.title)
+                        .padding(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(TintShapeStyle(), lineWidth: 3)
+                        )
+                }
+            }
+            .padding()
+            HStack {
+                if activeSetting == .animation {
                     HStack {
                         Text("Animations")
                         Picker("Animation Speed", selection: $viewModel.animationSpeed) {
@@ -29,37 +73,15 @@ struct SettingsHeaderView: View {
                         }
                         .pickerStyle(.segmented)
                     }
-                }
-                Spacer()
-            }
-            HStack {
-                Button {
-                    showDigits.toggle()
-                } label: {
-                    Image(systemName: "number")
-                        .imageScale(.large)
-                        .padding(25)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(TintShapeStyle(), lineWidth: 3)
-                        )
-                }
-                if showDigits {
+                } else if activeSetting == .digits {
                     VStack {
                         Stepper("# of digits: ", value: $viewModel.digits, in: 1...6)
-                        Picker(selection: $viewModel.base) {
-                            ForEach(Base.allCases) { base in
-                                Text(base.baseName)
-                                    .accentColor(Color(UIColor.systemBlue))
-                            }
-                        } label: { Text("Base").accentColor(.black) }
-
                     }
                 }
                 Spacer()
             }
             Spacer()
-        }.animation(.easeInOut, value: showDigits).animation(.easeInOut, value: showSpeed)
+        }.animation(.easeInOut, value: activeSetting)
             .padding()
     }
 }
