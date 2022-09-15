@@ -2,11 +2,12 @@ import SwiftUI
 
 struct SingleFlipView: View {
 
-    init(text: String, type: FlipType) {
+    init(text: String, type: FlipType, isBig: Bool = UIScreen.main.bounds.width > 500) {
         self.text = text
         self.type = type
+        self.isBig = isBig
     }
-    var isBig: Bool { UIScreen.main.bounds.width > 500 }
+    let isBig: Bool
 
     var body: some View {
         Text(text)
