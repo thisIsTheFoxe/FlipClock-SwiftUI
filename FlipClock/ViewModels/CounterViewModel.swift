@@ -1,10 +1,16 @@
 import SwiftUI
+import WidgetKit
+
+extension UserDefaults {
+    static let group = UserDefaults(suiteName: "group.me.thisisthefoxe.DaysSinceLast")!
+}
 
 class CounterViewModel: ObservableObject, FlipViewManager {
     var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
     @Published var daysSince: Int {
         didSet {
-            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
+            UserDefaults.group.set(daysSince, forKey: "CounterViewModel.daysSince")
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
@@ -12,14 +18,15 @@ class CounterViewModel: ObservableObject, FlipViewManager {
 
     @Published var animationSpeed: AnimationTime {
         didSet {
-            UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
+            UserDefaults.group.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
         }
     }
 
     @Published var base: Base {
         didSet {
-            UserDefaults.standard.set(base.rawValue, forKey: "CounterViewModel.base")
+            UserDefaults.group.set(base.rawValue, forKey: "CounterViewModel.base")
             refresh()
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
@@ -30,12 +37,11 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             result += 1
         }
         return result
-
     }
 
     @Published var digits: Int {
         didSet {
-            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
+            UserDefaults.group.set(digits, forKey: "CounterViewModel.digits")
             if digits == flipViewModels.count + 1 {
                 self.inCloseAnimation = true
                 let newModel = FlipViewModel(parentModel: self)
@@ -47,6 +53,7 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             } else if digits == flipViewModels.count - 1 {
                 flipViewModels.removeLast()
             } else { initModels() }
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 
@@ -54,18 +61,26 @@ class CounterViewModel: ObservableObject, FlipViewManager {
 
     @Published var description: String {
         didSet {
-            UserDefaults.standard.set(description, forKey: "CounterViewModel.description")
+            UserDefaults.group.set(description, forKey: "CounterViewModel.description")
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
-
+    
+    static func preview(digits: Int, count: Int) -> CounterViewModel {
+        let model = CounterViewModel()
+        model.digits = digits
+        model.daysSince = count
+        return model
+    }
+    
     init() {
-        if UserDefaults.standard.bool(forKey: "didSave") {
-            daysSince = UserDefaults.standard.integer(forKey: "CounterViewModel.daysSince")
-            digits = UserDefaults.standard.integer(forKey: "CounterViewModel.digits")
-            description = UserDefaults.standard.string(forKey: "CounterViewModel.description") ?? "Days since last accident"
-            let baseValue = UserDefaults.standard.integer(forKey: "CounterViewModel.base")
+        if UserDefaults.group.bool(forKey: "didSave") {
+            daysSince = UserDefaults.group.integer(forKey: "CounterViewModel.daysSince")
+            digits = UserDefaults.group.integer(forKey: "CounterViewModel.digits")
+            description = UserDefaults.group.string(forKey: "CounterViewModel.description") ?? "Days since last accident"
+            let baseValue = UserDefaults.group.integer(forKey: "CounterViewModel.base")
             base = Base(rawValue: baseValue) ?? .dec
-            let speedRawValue = UserDefaults.standard.integer(forKey: "CounterViewModel.animationSpeed")
+            let speedRawValue = UserDefaults.group.integer(forKey: "CounterViewModel.animationSpeed")
             animationSpeed = AnimationTime(rawValue: speedRawValue) ?? .long
         } else {
             animationSpeed = .long
@@ -74,12 +89,12 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             digits = 5
             description = "Days since last accident"
 
-            UserDefaults.standard.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
-            UserDefaults.standard.set(base.rawValue, forKey: "CounterViewModel.base")
-            UserDefaults.standard.set(daysSince, forKey: "CounterViewModel.daysSince")
-            UserDefaults.standard.set(digits, forKey: "CounterViewModel.digits")
-            UserDefaults.standard.set(description, forKey: "CounterViewModel.description")
-            UserDefaults.standard.set(true, forKey: "didSave")
+            UserDefaults.group.set(animationSpeed.rawValue, forKey: "CounterViewModel.animationSpeed")
+            UserDefaults.group.set(base.rawValue, forKey: "CounterViewModel.base")
+            UserDefaults.group.set(daysSince, forKey: "CounterViewModel.daysSince")
+            UserDefaults.group.set(digits, forKey: "CounterViewModel.digits")
+            UserDefaults.group.set(description, forKey: "CounterViewModel.description")
+            UserDefaults.group.set(true, forKey: "didSave")
         }
         initModels()
     }

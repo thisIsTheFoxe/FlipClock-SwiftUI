@@ -17,7 +17,6 @@
 		47F96E432354F3480036311F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96E422354F3480036311F /* AppDelegate.swift */; };
 		47F96E452354F3480036311F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96E442354F3480036311F /* SceneDelegate.swift */; };
 		47F96E472354F3480036311F /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96E462354F3480036311F /* CounterView.swift */; };
-		47F96E492354F3490036311F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E482354F3490036311F /* Assets.xcassets */; };
 		47F96E4C2354F3490036311F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4B2354F3490036311F /* Preview Assets.xcassets */; };
 		47F96E4F2354F3490036311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4D2354F3490036311F /* LaunchScreen.storyboard */; };
 		D51BBAEA284FFF2F000EDF0A /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BBAE9284FFF2F000EDF0A /* Base.swift */; };
@@ -27,7 +26,48 @@
 		D5C5BEF727DFB5B9007FE21B /* HapticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF527DFB5B9007FE21B /* HapticOperation.swift */; };
 		D5C5BEF827DFB5B9007FE21B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF627DFB5B9007FE21B /* Extensions.swift */; };
 		D5C5BEFA27DFB5E6007FE21B /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF927DFB5E6007FE21B /* Animations.swift */; };
+		D5F0D80028D2ACD70046C110 /* UIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0D7FF28D2ACD70046C110 /* UIApp.swift */; };
+		D5F0D80228D2AD2D0046C110 /* NewAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F0D80128D2AD2D0046C110 /* NewAsset.xcassets */; };
+		D5F0D80A28D2AED10046C110 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F0D80928D2AED10046C110 /* WidgetKit.framework */; };
+		D5F0D80C28D2AED10046C110 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5F0D80B28D2AED10046C110 /* SwiftUI.framework */; };
+		D5F0D81128D2AED30046C110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F0D81028D2AED30046C110 /* Assets.xcassets */; };
+		D5F0D81528D2AED30046C110 /* CounterWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D5F0D80728D2AED10046C110 /* CounterWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D5F0D81E28D2AF290046C110 /* CounterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0D81A28D2AEE60046C110 /* CounterWidget.swift */; };
+		D5F0D81F28D2AF290046C110 /* SimpleFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0D81B28D2AEE60046C110 /* SimpleFlipView.swift */; };
+		D5F0D82028D2AF3F0046C110 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */; };
+		D5F0D82128D2AF420046C110 /* SingleFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC22358F96A004E2BCA /* SingleFlipView.swift */; };
+		D5F0D82228D2AF480046C110 /* Color+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC42358F9B2004E2BCA /* Color+Colors.swift */; };
+		D5F0D82328D2AF560046C110 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF927DFB5E6007FE21B /* Animations.swift */; };
+		D5F0D82428D2AF5E0046C110 /* HapticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF527DFB5B9007FE21B /* HapticOperation.swift */; };
+		D5F0D82528D2AF670046C110 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC02358F93C004E2BCA /* FlipViewModel.swift */; };
+		D5F0D82628D2AF6D0046C110 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BBAE9284FFF2F000EDF0A /* Base.swift */; };
+		D5F0D82728D2AF770046C110 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF627DFB5B9007FE21B /* Extensions.swift */; };
+		D5F0D82828D2B3170046C110 /* NewAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F0D80128D2AD2D0046C110 /* NewAsset.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D5F0D81328D2AED30046C110 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47F96E372354F3480036311F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5F0D80628D2AED10046C110;
+			remoteInfo = CounterWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D5F0D81928D2AED30046C110 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D5F0D81528D2AED30046C110 /* CounterWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		47DEBEBA2358F8C4004E2BCA /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
@@ -37,11 +77,10 @@
 		47DEBEC22358F96A004E2BCA /* SingleFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFlipView.swift; sourceTree = "<group>"; };
 		47DEBEC42358F9B2004E2BCA /* Color+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Colors.swift"; sourceTree = "<group>"; };
 		47DEBEC62358F9D5004E2BCA /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
-		47F96E3F2354F3480036311F /* FlipClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47F96E3F2354F3480036311F /* lil counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lil counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F96E422354F3480036311F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47F96E442354F3480036311F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		47F96E462354F3480036311F /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
-		47F96E482354F3490036311F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47F96E4B2354F3490036311F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47F96E4E2354F3490036311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47F96E502354F3490036311F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +91,17 @@
 		D5C5BEF527DFB5B9007FE21B /* HapticOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticOperation.swift; sourceTree = "<group>"; };
 		D5C5BEF627DFB5B9007FE21B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5C5BEF927DFB5E6007FE21B /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		D5F0D7FF28D2ACD70046C110 /* UIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApp.swift; sourceTree = "<group>"; };
+		D5F0D80128D2AD2D0046C110 /* NewAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewAsset.xcassets; sourceTree = "<group>"; };
+		D5F0D80728D2AED10046C110 /* CounterWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CounterWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F0D80928D2AED10046C110 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D5F0D80B28D2AED10046C110 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D5F0D81028D2AED30046C110 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D5F0D81228D2AED30046C110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5F0D81A28D2AEE60046C110 /* CounterWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CounterWidget.swift; path = FCWidget/CounterWidget.swift; sourceTree = SOURCE_ROOT; };
+		D5F0D81B28D2AEE60046C110 /* SimpleFlipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleFlipView.swift; path = FCWidget/SimpleFlipView.swift; sourceTree = SOURCE_ROOT; };
+		D5F0D82928D2F36E0046C110 /* CounterWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CounterWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D5F0D82A28D2F6610046C110 /* lil counter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "lil counter.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +109,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5F0D80428D2AED10046C110 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F0D80C28D2AED10046C110 /* SwiftUI.framework in Frameworks */,
+				D5F0D80A28D2AED10046C110 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +136,7 @@
 		47DEBEC92358FA3C004E2BCA /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				47F96E482354F3490036311F /* Assets.xcassets */,
+				D5F0D80128D2AD2D0046C110 /* NewAsset.xcassets */,
 				47F96E502354F3490036311F /* Info.plist */,
 				47F96E4D2354F3490036311F /* LaunchScreen.storyboard */,
 			);
@@ -114,6 +173,7 @@
 				47DEBEC42358F9B2004E2BCA /* Color+Colors.swift */,
 				D5C5BEF627DFB5B9007FE21B /* Extensions.swift */,
 				D5C5BEF927DFB5E6007FE21B /* Animations.swift */,
+				D5F0D7FF28D2ACD70046C110 /* UIApp.swift */,
 				D5C5BEF527DFB5B9007FE21B /* HapticOperation.swift */,
 				47DEBEBC2358F902004E2BCA /* DateFormatter+TimeFormatter.swift */,
 			);
@@ -123,7 +183,11 @@
 		47F96E362354F3480036311F = {
 			isa = PBXGroup;
 			children = (
+				D5F0D82A28D2F6610046C110 /* lil counter.entitlements */,
+				D5F0D82928D2F36E0046C110 /* CounterWidgetExtension.entitlements */,
 				47F96E412354F3480036311F /* FlipClock */,
+				D5F0D80D28D2AED10046C110 /* CounterWidget */,
+				D5F0D80828D2AED10046C110 /* Frameworks */,
 				47F96E402354F3480036311F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -131,7 +195,8 @@
 		47F96E402354F3480036311F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47F96E3F2354F3480036311F /* FlipClock.app */,
+				47F96E3F2354F3480036311F /* lil counter.app */,
+				D5F0D80728D2AED10046C110 /* CounterWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,25 +222,64 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D5F0D80828D2AED10046C110 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5F0D80928D2AED10046C110 /* WidgetKit.framework */,
+				D5F0D80B28D2AED10046C110 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5F0D80D28D2AED10046C110 /* CounterWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D5F0D81A28D2AEE60046C110 /* CounterWidget.swift */,
+				D5F0D81B28D2AEE60046C110 /* SimpleFlipView.swift */,
+				D5F0D81028D2AED30046C110 /* Assets.xcassets */,
+				D5F0D81228D2AED30046C110 /* Info.plist */,
+			);
+			path = CounterWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		47F96E3E2354F3480036311F /* FlipClock */ = {
+		47F96E3E2354F3480036311F /* lil counter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "FlipClock" */;
+			buildConfigurationList = 47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "lil counter" */;
 			buildPhases = (
 				47F96E3B2354F3480036311F /* Sources */,
 				47F96E3C2354F3480036311F /* Frameworks */,
 				47F96E3D2354F3480036311F /* Resources */,
+				D5F0D81928D2AED30046C110 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D5F0D81428D2AED30046C110 /* PBXTargetDependency */,
+			);
+			name = "lil counter";
+			productName = FlipCountdown;
+			productReference = 47F96E3F2354F3480036311F /* lil counter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D5F0D80628D2AED10046C110 /* CounterWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5F0D81628D2AED30046C110 /* Build configuration list for PBXNativeTarget "CounterWidgetExtension" */;
+			buildPhases = (
+				D5F0D80328D2AED10046C110 /* Sources */,
+				D5F0D80428D2AED10046C110 /* Frameworks */,
+				D5F0D80528D2AED10046C110 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = FlipClock;
-			productName = FlipCountdown;
-			productReference = 47F96E3F2354F3480036311F /* FlipClock.app */;
-			productType = "com.apple.product-type.application";
+			name = CounterWidgetExtension;
+			productName = CounterWidgetExtension;
+			productReference = D5F0D80728D2AED10046C110 /* CounterWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -183,16 +287,19 @@
 		47F96E372354F3480036311F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Maciej Gomółka";
 				TargetAttributes = {
 					47F96E3E2354F3480036311F = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					D5F0D80628D2AED10046C110 = {
+						CreatedOnToolsVersion = 14.0;
+					};
 				};
 			};
-			buildConfigurationList = 47F96E3A2354F3480036311F /* Build configuration list for PBXProject "FlipClock" */;
+			buildConfigurationList = 47F96E3A2354F3480036311F /* Build configuration list for PBXProject "lil counter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,7 +312,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				47F96E3E2354F3480036311F /* FlipClock */,
+				47F96E3E2354F3480036311F /* lil counter */,
+				D5F0D80628D2AED10046C110 /* CounterWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -217,7 +325,16 @@
 			files = (
 				47F96E4F2354F3490036311F /* LaunchScreen.storyboard in Resources */,
 				47F96E4C2354F3490036311F /* Preview Assets.xcassets in Resources */,
-				47F96E492354F3490036311F /* Assets.xcassets in Resources */,
+				D5F0D80228D2AD2D0046C110 /* NewAsset.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5F0D80528D2AED10046C110 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F0D81128D2AED30046C110 /* Assets.xcassets in Resources */,
+				D5F0D82828D2B3170046C110 /* NewAsset.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +348,7 @@
 				D5C5BEF227DFB50E007FE21B /* SettingsHeaderView.swift in Sources */,
 				47F96E432354F3480036311F /* AppDelegate.swift in Sources */,
 				47DEBEBF2358F91E004E2BCA /* ClockView.swift in Sources */,
+				D5F0D80028D2ACD70046C110 /* UIApp.swift in Sources */,
 				D5C5BEF027DFB504007FE21B /* CounterViewModel.swift in Sources */,
 				47F96E452354F3480036311F /* SceneDelegate.swift in Sources */,
 				47DEBEC52358F9B2004E2BCA /* Color+Colors.swift in Sources */,
@@ -248,7 +366,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D5F0D80328D2AED10046C110 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F0D81E28D2AF290046C110 /* CounterWidget.swift in Sources */,
+				D5F0D81F28D2AF290046C110 /* SimpleFlipView.swift in Sources */,
+				D5F0D82328D2AF560046C110 /* Animations.swift in Sources */,
+				D5F0D82028D2AF3F0046C110 /* CounterViewModel.swift in Sources */,
+				D5F0D82228D2AF480046C110 /* Color+Colors.swift in Sources */,
+				D5F0D82728D2AF770046C110 /* Extensions.swift in Sources */,
+				D5F0D82528D2AF670046C110 /* FlipViewModel.swift in Sources */,
+				D5F0D82628D2AF6D0046C110 /* Base.swift in Sources */,
+				D5F0D82428D2AF5E0046C110 /* HapticOperation.swift in Sources */,
+				D5F0D82128D2AF420046C110 /* SingleFlipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D5F0D81428D2AED30046C110 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5F0D80628D2AED10046C110 /* CounterWidgetExtension */;
+			targetProxy = D5F0D81328D2AED30046C110 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		47F96E4D2354F3490036311F /* LaunchScreen.storyboard */ = {
@@ -296,6 +439,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -314,6 +458,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 2.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -356,6 +501,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -368,6 +514,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 2.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -380,19 +527,22 @@
 		47F96E542354F3490036311F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "lil counter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FlipClock/Preview Content\"";
 				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FlipClock/SupportingFiles/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "lil counter";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.elpassion.FlipClock;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.DaysSinceLast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -403,21 +553,84 @@
 		47F96E552354F3490036311F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "lil counter.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FlipClock/Preview Content\"";
 				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/FlipClock/SupportingFiles/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "lil counter";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.elpassion.FlipClock;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.DaysSinceLast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D5F0D81728D2AED30046C110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = CounterWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Counter Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Maciej Gomółka. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.DaysSinceLast.CounterWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5F0D81828D2AED30046C110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = CounterWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CounterWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Counter Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Maciej Gomółka. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.DaysSinceLast.CounterWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -426,7 +639,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		47F96E3A2354F3480036311F /* Build configuration list for PBXProject "FlipClock" */ = {
+		47F96E3A2354F3480036311F /* Build configuration list for PBXProject "lil counter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47F96E512354F3490036311F /* Debug */,
@@ -435,11 +648,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "FlipClock" */ = {
+		47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "lil counter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47F96E542354F3490036311F /* Debug */,
 				47F96E552354F3490036311F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5F0D81628D2AED30046C110 /* Build configuration list for PBXNativeTarget "CounterWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5F0D81728D2AED30046C110 /* Debug */,
+				D5F0D81828D2AED30046C110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
