@@ -17,7 +17,9 @@ struct CounterView: View {
             SettingsHeaderView(viewModel: viewModel)
             Spacer()
             Text("\(viewModel.description):")
+#if !os(tvOS)
                 .font(.title)
+#endif
                 .onTapGesture {
                     UIApplication.shared.keyWindow()?.showAlert(placeholder: "Title", currentText: viewModel.description, primaryTitle: "Set Title", cancelTitle: "Cancel", primaryAction: { newTitle in
                         viewModel.description = newTitle
@@ -41,10 +43,12 @@ struct CounterView: View {
             }
             .disabled(viewModel.inCloseAnimation)
             .padding()
+#if !os(tvOS)
             .overlay(
                 RoundedRectangle(cornerRadius: 4)
                     .stroke(TintShapeStyle(), lineWidth: 3)
             )
+#endif
             .padding(.bottom)
             Button(action: {
                 viewModel.increase()
@@ -53,14 +57,17 @@ struct CounterView: View {
             })
             .disabled(viewModel.inCloseAnimation)
             .padding()
+#if !os(tvOS)
             .overlay(
                 RoundedRectangle(cornerRadius: 4)
                     .stroke(TintShapeStyle(), lineWidth: 3)
             )
+#endif
             Spacer(minLength: 100)
         }
         .tint(Color.flipBackground)
         .background()
+#if !os(tvOS)
         .gesture(
             DragGesture(minimumDistance: 5, coordinateSpace: .global)
                 .onChanged { value in
@@ -81,6 +88,7 @@ struct CounterView: View {
                     }
                 })
         )
+#endif
     }
 }
 

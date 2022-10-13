@@ -20,6 +20,25 @@
 		47F96E4C2354F3490036311F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4B2354F3490036311F /* Preview Assets.xcassets */; };
 		47F96E4F2354F3490036311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F96E4D2354F3490036311F /* LaunchScreen.storyboard */; };
 		D51BBAEA284FFF2F000EDF0A /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BBAE9284FFF2F000EDF0A /* Base.swift */; };
+		D590483D28F7AB6000E04AA2 /* TVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590483C28F7AB6000E04AA2 /* TVApp.swift */; };
+		D590483F28F7AB6000E04AA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590483E28F7AB6000E04AA2 /* ContentView.swift */; };
+		D590484128F7AB6200E04AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D590484028F7AB6200E04AA2 /* Assets.xcassets */; };
+		D590484428F7AB6200E04AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D590484328F7AB6200E04AA2 /* Preview Assets.xcassets */; };
+		D590484828F7AC0E00E04AA2 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96E462354F3480036311F /* CounterView.swift */; };
+		D590484928F7AC4200E04AA2 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF127DFB50E007FE21B /* SettingsHeaderView.swift */; };
+		D590484A28F7AC4500E04AA2 /* SingleFlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC22358F96A004E2BCA /* SingleFlipView.swift */; };
+		D590484B28F7AC4800E04AA2 /* FlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC02358F93C004E2BCA /* FlipViewModel.swift */; };
+		D590484C28F7AC4800E04AA2 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51BBAE9284FFF2F000EDF0A /* Base.swift */; };
+		D590484D28F7AC4800E04AA2 /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEBA2358F8C4004E2BCA /* ClockViewModel.swift */; };
+		D590484E28F7AC4800E04AA2 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */; };
+		D590485028F7AC4C00E04AA2 /* DateFormatter+TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEBC2358F902004E2BCA /* DateFormatter+TimeFormatter.swift */; };
+		D590485128F7AC4C00E04AA2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF627DFB5B9007FE21B /* Extensions.swift */; };
+		D590485228F7AC4C00E04AA2 /* Color+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC42358F9B2004E2BCA /* Color+Colors.swift */; };
+		D590485328F7AC4C00E04AA2 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF927DFB5E6007FE21B /* Animations.swift */; };
+		D590485428F7AC4C00E04AA2 /* UIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F0D7FF28D2ACD70046C110 /* UIApp.swift */; };
+		D590485528F7B49100E04AA2 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DEBEC62358F9D5004E2BCA /* FlipView.swift */; };
+		D590485728F7B82B00E04AA2 /* SwiftUI+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D590485628F7B82B00E04AA2 /* SwiftUI+tvOS.swift */; };
+		D590485828F7C06600E04AA2 /* NewAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F0D80128D2AD2D0046C110 /* NewAsset.xcassets */; };
 		D5C5BEF027DFB504007FE21B /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */; };
 		D5C5BEF227DFB50E007FE21B /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF127DFB50E007FE21B /* SettingsHeaderView.swift */; };
 		D5C5BEF427DFB520007FE21B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C5BEF327DFB520007FE21B /* ContentView.swift */; };
@@ -77,7 +96,7 @@
 		47DEBEC22358F96A004E2BCA /* SingleFlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFlipView.swift; sourceTree = "<group>"; };
 		47DEBEC42358F9B2004E2BCA /* Color+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Colors.swift"; sourceTree = "<group>"; };
 		47DEBEC62358F9D5004E2BCA /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
-		47F96E3F2354F3480036311F /* lil counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lil counter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47F96E3F2354F3480036311F /* counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F96E422354F3480036311F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47F96E442354F3480036311F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		47F96E462354F3480036311F /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
@@ -85,6 +104,12 @@
 		47F96E4E2354F3490036311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47F96E502354F3490036311F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D51BBAE9284FFF2F000EDF0A /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		D590483A28F7AB6000E04AA2 /* TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D590483C28F7AB6000E04AA2 /* TVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVApp.swift; sourceTree = "<group>"; };
+		D590483E28F7AB6000E04AA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D590484028F7AB6200E04AA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D590484328F7AB6200E04AA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D590485628F7B82B00E04AA2 /* SwiftUI+tvOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+tvOS.swift"; sourceTree = "<group>"; };
 		D5C5BEEF27DFB501007FE21B /* CounterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
 		D5C5BEF127DFB50E007FE21B /* SettingsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		D5C5BEF327DFB520007FE21B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +131,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		47F96E3C2354F3480036311F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D590483728F7AB6000E04AA2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -187,6 +219,7 @@
 				D5F0D82928D2F36E0046C110 /* CounterWidgetExtension.entitlements */,
 				47F96E412354F3480036311F /* FlipClock */,
 				D5F0D80D28D2AED10046C110 /* CounterWidget */,
+				D590483B28F7AB6000E04AA2 /* TV */,
 				D5F0D80828D2AED10046C110 /* Frameworks */,
 				47F96E402354F3480036311F /* Products */,
 			);
@@ -195,8 +228,9 @@
 		47F96E402354F3480036311F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47F96E3F2354F3480036311F /* lil counter.app */,
+				47F96E3F2354F3480036311F /* counter.app */,
 				D5F0D80728D2AED10046C110 /* CounterWidgetExtension.appex */,
+				D590483A28F7AB6000E04AA2 /* TV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,6 +252,26 @@
 			isa = PBXGroup;
 			children = (
 				47F96E4B2354F3490036311F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D590483B28F7AB6000E04AA2 /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				D590483C28F7AB6000E04AA2 /* TVApp.swift */,
+				D590485628F7B82B00E04AA2 /* SwiftUI+tvOS.swift */,
+				D590483E28F7AB6000E04AA2 /* ContentView.swift */,
+				D590484028F7AB6200E04AA2 /* Assets.xcassets */,
+				D590484228F7AB6200E04AA2 /* Preview Content */,
+			);
+			path = TV;
+			sourceTree = "<group>";
+		};
+		D590484228F7AB6200E04AA2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D590484328F7AB6200E04AA2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -245,9 +299,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		47F96E3E2354F3480036311F /* lil counter */ = {
+		47F96E3E2354F3480036311F /* counter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "lil counter" */;
+			buildConfigurationList = 47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "counter" */;
 			buildPhases = (
 				47F96E3B2354F3480036311F /* Sources */,
 				47F96E3C2354F3480036311F /* Frameworks */,
@@ -259,9 +313,26 @@
 			dependencies = (
 				D5F0D81428D2AED30046C110 /* PBXTargetDependency */,
 			);
-			name = "lil counter";
+			name = counter;
 			productName = FlipCountdown;
-			productReference = 47F96E3F2354F3480036311F /* lil counter.app */;
+			productReference = 47F96E3F2354F3480036311F /* counter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D590483928F7AB6000E04AA2 /* TV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D590484728F7AB6200E04AA2 /* Build configuration list for PBXNativeTarget "TV" */;
+			buildPhases = (
+				D590483628F7AB6000E04AA2 /* Sources */,
+				D590483728F7AB6000E04AA2 /* Frameworks */,
+				D590483828F7AB6000E04AA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TV;
+			productName = "-";
+			productReference = D590483A28F7AB6000E04AA2 /* TV.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D5F0D80628D2AED10046C110 /* CounterWidgetExtension */ = {
@@ -294,12 +365,15 @@
 					47F96E3E2354F3480036311F = {
 						CreatedOnToolsVersion = 11.0;
 					};
+					D590483928F7AB6000E04AA2 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					D5F0D80628D2AED10046C110 = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
-			buildConfigurationList = 47F96E3A2354F3480036311F /* Build configuration list for PBXProject "lil counter" */;
+			buildConfigurationList = 47F96E3A2354F3480036311F /* Build configuration list for PBXProject "counter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -312,8 +386,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				47F96E3E2354F3480036311F /* lil counter */,
+				47F96E3E2354F3480036311F /* counter */,
 				D5F0D80628D2AED10046C110 /* CounterWidgetExtension */,
+				D590483928F7AB6000E04AA2 /* TV */,
 			);
 		};
 /* End PBXProject section */
@@ -326,6 +401,16 @@
 				47F96E4F2354F3490036311F /* LaunchScreen.storyboard in Resources */,
 				47F96E4C2354F3490036311F /* Preview Assets.xcassets in Resources */,
 				D5F0D80228D2AD2D0046C110 /* NewAsset.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D590483828F7AB6000E04AA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D590484428F7AB6200E04AA2 /* Preview Assets.xcassets in Resources */,
+				D590485828F7C06600E04AA2 /* NewAsset.xcassets in Resources */,
+				D590484128F7AB6200E04AA2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +448,29 @@
 				D5C5BEF727DFB5B9007FE21B /* HapticOperation.swift in Sources */,
 				D5C5BEFA27DFB5E6007FE21B /* Animations.swift in Sources */,
 				47DEBEC32358F96A004E2BCA /* SingleFlipView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D590483628F7AB6000E04AA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D590484928F7AC4200E04AA2 /* SettingsHeaderView.swift in Sources */,
+				D590484B28F7AC4800E04AA2 /* FlipViewModel.swift in Sources */,
+				D590485228F7AC4C00E04AA2 /* Color+Colors.swift in Sources */,
+				D590484E28F7AC4800E04AA2 /* CounterViewModel.swift in Sources */,
+				D590484A28F7AC4500E04AA2 /* SingleFlipView.swift in Sources */,
+				D590485328F7AC4C00E04AA2 /* Animations.swift in Sources */,
+				D590485028F7AC4C00E04AA2 /* DateFormatter+TimeFormatter.swift in Sources */,
+				D590483F28F7AB6000E04AA2 /* ContentView.swift in Sources */,
+				D590485128F7AC4C00E04AA2 /* Extensions.swift in Sources */,
+				D590483D28F7AB6000E04AA2 /* TVApp.swift in Sources */,
+				D590485528F7B49100E04AA2 /* FlipView.swift in Sources */,
+				D590484C28F7AC4800E04AA2 /* Base.swift in Sources */,
+				D590485428F7AC4C00E04AA2 /* UIApp.swift in Sources */,
+				D590484828F7AC0E00E04AA2 /* CounterView.swift in Sources */,
+				D590484D28F7AC4800E04AA2 /* ClockViewModel.swift in Sources */,
+				D590485728F7B82B00E04AA2 /* SwiftUI+tvOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +547,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -501,7 +609,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -576,6 +684,68 @@
 			};
 			name = Release;
 		};
+		D590484528F7AB6200E04AA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TV/Preview Content\"";
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "lil counter";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.seximal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+			};
+			name = Debug;
+		};
+		D590484628F7AB6200E04AA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TV/Preview Content\"";
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "lil counter";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.seximal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+			};
+			name = Release;
+		};
 		D5F0D81728D2AED30046C110 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -639,7 +809,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		47F96E3A2354F3480036311F /* Build configuration list for PBXProject "lil counter" */ = {
+		47F96E3A2354F3480036311F /* Build configuration list for PBXProject "counter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47F96E512354F3490036311F /* Debug */,
@@ -648,11 +818,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "lil counter" */ = {
+		47F96E532354F3490036311F /* Build configuration list for PBXNativeTarget "counter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47F96E542354F3490036311F /* Debug */,
 				47F96E552354F3490036311F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D590484728F7AB6200E04AA2 /* Build configuration list for PBXNativeTarget "TV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D590484528F7AB6200E04AA2 /* Debug */,
+				D590484628F7AB6200E04AA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
