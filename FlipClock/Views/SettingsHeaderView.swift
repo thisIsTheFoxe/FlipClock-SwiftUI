@@ -39,16 +39,14 @@ struct SettingsHeaderView: View {
                 }
                 Menu {
                     ForEach(Base.allCases) { base in
-                        HStack {
-                            Button {
-                                viewModel.base = base
-                            } label: {
-                                if base == viewModel.base {
-                                    Image(systemName: "checkmark")
-                                    Spacer()
-                                }
-                                Text(base.baseName)
+                        Button {
+                            viewModel.base = base
+                        } label: {
+                            if base == viewModel.base {
+                                Image(systemName: "checkmark")
+                                Spacer()
                             }
+                            Text(base.baseName)
                         }
                     }
                 } label: {
@@ -83,6 +81,9 @@ struct SettingsHeaderView: View {
             Spacer()
         }.animation(.easeInOut, value: activeSetting)
             .padding()
+        #if os(tvOS)
+            .scaleEffect(0.5)
+        #endif
     }
 }
 

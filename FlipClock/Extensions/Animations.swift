@@ -12,7 +12,7 @@ enum AnimationTime: Int, CaseIterable, Equatable {
         }
     }
     case short, medium, long
-
+#if !os(tvOS)
     var flipPattern: HapticoPattern {
         switch self {
         case .short:
@@ -34,7 +34,7 @@ enum AnimationTime: Int, CaseIterable, Equatable {
             return HapticoPattern(pattern: "o-o-o-*")
         }
     }
-
+#endif
     var flipAnimation: Animation {
         switch self {
         case .short:

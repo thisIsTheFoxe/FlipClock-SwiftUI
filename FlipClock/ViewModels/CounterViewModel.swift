@@ -1,16 +1,22 @@
 import SwiftUI
+#if canImport(WidgetKit)
 import WidgetKit
+#endif
 
 extension UserDefaults {
     static let group = UserDefaults(suiteName: "group.me.thisisthefoxe.DaysSinceLast")!
 }
 
 class CounterViewModel: ObservableObject, FlipViewManager {
+#if !os(tvOS)
     var patternEngine = PatternEngine(hapticEngine: HapticFeedbackNotificationEngine())
+#endif
     @Published var daysSince: Int {
         didSet {
             UserDefaults.group.set(daysSince, forKey: "CounterViewModel.daysSince")
+#if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
+#endif
         }
     }
 
@@ -26,7 +32,9 @@ class CounterViewModel: ObservableObject, FlipViewManager {
         didSet {
             UserDefaults.group.set(base.rawValue, forKey: "CounterViewModel.base")
             refresh()
+#if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
+#endif
         }
     }
 
@@ -53,7 +61,9 @@ class CounterViewModel: ObservableObject, FlipViewManager {
             } else if digits == flipViewModels.count - 1 {
                 flipViewModels.removeLast()
             } else { initModels() }
+#if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
+#endif
         }
     }
 
@@ -62,7 +72,9 @@ class CounterViewModel: ObservableObject, FlipViewManager {
     @Published var description: String {
         didSet {
             UserDefaults.group.set(description, forKey: "CounterViewModel.description")
+#if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
+#endif
         }
     }
     
@@ -114,14 +126,18 @@ class CounterViewModel: ObservableObject, FlipViewManager {
         let delay: Double
         if isReset {
             delay = animationSpeed.resetFlip + animationSpeed.fallSpringFlip
+#if !os(tvOS)
             DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.resetFlip) {
                 self.patternEngine.generate(pattern: self.animationSpeed.resetPattern)
             }
+#endif
         } else {
             delay = animationSpeed.halfFlip + animationSpeed.fallSpringFlip
+#if !os(tvOS)
             DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
                 self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
             }
+#endif
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay){
             self.inCloseAnimation = false
@@ -152,7 +168,9 @@ class CounterViewModel: ObservableObject, FlipViewManager {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.halfFlip) {
             self.complete()
+#if !os(tvOS)
             self.patternEngine.generate(pattern: self.animationSpeed.flipPattern)
+#endif
         }
     }
     
